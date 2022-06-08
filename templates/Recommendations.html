@@ -1,0 +1,184 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+  .card{
+    height: 350px;
+    width: 230px;
+    transition: transform 450ms;
+  }
+
+  .card:hover{
+    transform: scale(1.08);
+  }
+  .flex{
+    display: flex;
+    gap: 20px;
+  }
+</style>
+    <div class="container-fluid">
+        <div class="container-fluid">
+            {% include 'Navbar.html' %}
+        </div>
+    </div>
+    <div class="container-fluid movie-show-section">
+        <h5><b>Trending Now</b></h5>
+        <div class="flex">
+            {% for now_playing in now_playing_movies|slice:":4" %}
+            <div class="flex">
+                <a href="{% url 'MovieDetails' now_playing.id %}">
+                    <img src="/media/{{now_playing.poster}}" class="fluid img-thumbnail card">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- <div class="container-fluid movie-show-section">
+        <h5><b>Critically Aclaimed TV Shows</b></h5>
+        <div class="row">
+            {% for tv_show in top_rated|slice:":4" %}
+            <div class="col-sm-3 mb-3 d-flex align-items-stretch">
+                <a href="{% url 'TVDetails' tv_show.id %}">
+                    <img src="/media/{{ tv_show.poster }}" class="fluid img-thumbnail">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div> -->
+    <div class="container-fluid movie-show-section">
+        <h5><b>Top Picks</b></h5>
+        <div class="flex">
+            {% for top in must_watch|slice:":4" %}
+            <div class="">
+                <a href="{% url 'MovieDetails' top.id %}">
+                    <img src="/media/{{ top.poster }}" class="fluid img-thumbnail card">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="container-fluid movie-show-section" style="margin-bottom: 50px;">
+        <h5><b>Must Watch Shows</b></h5>
+        <div class="flex">
+            {% for popular in popular_tv|slice:":4" %}
+            <div class="col-sm-3 mb-3 d-flex align-items-stretch">
+                <a href="{% url 'MovieDetails' popular.id %}">
+                    <img src="/media/{{ popular.poster }}" class="fluid card">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="container-fluid movie-show-section">
+        <h5><b>Watch It Again</b></h5>
+        <div class="flex">
+            {% for upcoming in again|slice:":4" %}
+            <div class="col-sm-3 mb-3 d-flex align-items-stretch">
+                <a href="{% url 'MovieDetails' upcoming.id %}">
+                    <img src="/media/{{ upcoming.poster }}" class="fluid img-thumbnail card">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="page-footer font-small unique-color-dark">
+
+      <!-- Footer Links -->
+      <div class="container text-center text-md-left mt-5">
+
+        <!-- Grid row -->
+        <div class="row mt-3">
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+            <!-- Links -->
+            <p>
+              <a href="#!">FAQ</a>
+            </p>
+            <p>
+              <a href="#!">Investor Relations</a>
+            </p>
+            <p>
+              <a href="#!">Privacy</a>
+            </p>
+            <p>
+              <a href="#!">Speed Test</a>
+            </p>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+            <!-- Links -->
+            <p>
+              <a href="#!">Help Center</a>
+            </p>
+            <p>
+              <a href="#!">Jobs</a>
+            </p>
+            <p>
+              <a href="#!">Cookie Preferences</a>
+            </p>
+            <p>
+              <a href="#!">Legal Notices</a>
+            </p>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+            <!-- Links -->
+            <p>
+              <a href="#!">Account</a>
+            </p>
+            <p>
+              <a href="#!">Ways to Watch</a>
+            </p>
+            <p>
+              <a href="#!">Corporate Information</a>
+            </p>
+            <p>
+              <a href="#!">Only on Talkies</a>
+            </p>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+            <!-- Links -->
+            <p>
+              <a href="#!">Media Center</a>
+            <p>
+              <a href="#!">Terms of Use</a>
+            <p>
+              <a href="#!">Contact Us</a>
+
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+      </div>
+      <!-- Footer Links -->
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2022 Copyright
+        <a href="" target="_blank"> Talkies</a>
+      </div>
+      <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->   
+    
+{% endblock %}
